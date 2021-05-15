@@ -1,8 +1,8 @@
-##Desafio técnico: Ecommerce - Checkout transparente
+## Desafio técnico: Ecommerce - Checkout transparente
 
 A popularização das vendas pela internet tem ganhado gradativamente mais relevância. E com isso, otimizações em usabilidade e facilidade no checkout têm ganhado bastante atenção, pois uma alta porcentagem de clientes desistem da compra na fase de checkout, seja por má estruturação ou por muita burocracia. Uma abordagem de checkout é o trasparente que é um recurso o qual permite que o consumidor conclua a jornada no próprio ambiente da loja virtual (diferentemente do checkout padrão e do lightbox, que transferem o usuário para o site do intermediador de pagamento através de uma nova aba ou um popup).
 
-###Desafio Proposto
+### Desafio Proposto
 
 Implementar um checkout transparente de uma loja virtual que por meio de um carrinho de compras seleciona-se o endereço de entrega e a transportadora(frete) e após isso o pagamento. Considerando que o gerenciamento de pagamentos deve estar gerenciado pela própria loja virtual.
 
