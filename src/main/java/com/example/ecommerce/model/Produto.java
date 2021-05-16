@@ -5,7 +5,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.math.BigDecimal;
-import java.math.BigInteger;
 
 @Entity
 public class Produto {
@@ -17,6 +16,7 @@ public class Produto {
     private String descricao;
     private String urlProduto;
     private String urlFoto;
+    private Double quantidade =0.0;
 
     public long getId() {
         return id;
@@ -64,5 +64,13 @@ public class Produto {
 
     public void setUrlFoto(String urlFoto) {
         this.urlFoto = urlFoto;
+    }
+
+    public Double getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(Double quantidade) {
+        this.quantidade = quantidade;
     }
 }
