@@ -15,7 +15,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	<a class="navbar-brand" href="#">E-commerce</a>
+	<a class="navbar-brand" href="/home">E-commerce</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
@@ -23,7 +23,7 @@
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item active">
-				<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+				<a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
 			</li>
 		</ul>
 	</div>
@@ -39,7 +39,8 @@
 				<h3>R$ <span th:text="${produto.valor}">199.00</span></h3>
 				<h5 class="card-title" th:text="${produto.nome}">Nome do Produto</h5>
 				<p class="card-text" th:text="${produto.descricao}">Descrição</p>
-				<a href="#" class="btn btn-primary">Comprar</a>
+				<a href="#" class="btn btn-warning">Editar</a>
+				<a href="#" class="btn btn-danger">Excluir</a>
 			</div>
 		</div>
 	</div>

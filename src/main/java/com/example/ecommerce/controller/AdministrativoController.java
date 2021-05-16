@@ -8,6 +8,6 @@ public class AdministrativoController {
 
     @GetMapping("/administrativo")
     public String administrativo(){
-        return "administrativo/index";
+        return "administrativo/home";
     }
 }
