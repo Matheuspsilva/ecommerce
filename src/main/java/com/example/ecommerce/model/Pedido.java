@@ -1,17 +1,25 @@
 package com.example.ecommerce.model;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
+import javax.persistence.*;
+import java.util.Date;
 
+@Entity
 public class Pedido {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private BigDecimal valor;
-    private LocalDate dataPedido;
-    private LocalDate dataEntrega;
+    private Double valor;
+    private Double frete;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dataPedido = new Date();
+    private Date dataEntrega;
+    private String formaPagamento;
     private String status;
     private String observacoes;
+
+    @ManyToOne
+    private Cliente cliente;
 
     public long getId() {
         return id;
@@ -21,28 +29,44 @@ public class Pedido {
         this.id = id;
     }
 
-    public BigDecimal getValor() {
+    public Double getValor() {
         return valor;
     }
 
-    public void setValor(BigDecimal valor) {
+    public void setValor(Double valor) {
         this.valor = valor;
     }
 
-    public LocalDate getDataPedido() {
+    public Double getFrete() {
+        return frete;
+    }
+
+    public void setFrete(Double frete) {
+        this.frete = frete;
+    }
+
+    public Date getDataPedido() {
         return dataPedido;
     }
 
-    public void setDataPedido(LocalDate dataPedido) {
+    public void setDataPedido(Date dataPedido) {
         this.dataPedido = dataPedido;
     }
 
-    public LocalDate getDataEntrega() {
+    public Date getDataEntrega() {
         return dataEntrega;
     }
 
-    public void setDataEntrega(LocalDate dataEntrega) {
+    public void setDataEntrega(Date dataEntrega) {
         this.dataEntrega = dataEntrega;
+    }
+
+    public String getFormaPagamento() {
+        return formaPagamento;
+    }
+
+    public void setFormaPagamento(String formaPagamento) {
+        this.formaPagamento = formaPagamento;
     }
 
     public String getStatus() {
@@ -59,5 +83,13 @@ public class Pedido {
 
     public void setObservacoes(String observacoes) {
         this.observacoes = observacoes;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 }

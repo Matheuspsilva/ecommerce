@@ -13,36 +13,20 @@
                             <thead>
                             <tr>
                                 <th scope="col"> </th>
-                                <th scope="col">Product</th>
-                                <th scope="col">Available</th>
-                                <th scope="col" class="text-center">Quantity</th>
-                                <th scope="col" class="text-right">Price</th>
+                                <th scope="col">Produto</th>
+                                <th scope="col">Estoque</th>
+                                <th scope="col" class="text-center">Quantidade</th>
+                                <th scope="col" class="text-right">Preço</th>
                                 <th> </th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-                                <td>Product Name Dada</td>
-                                <td>In stock</td>
-                                <td><input class="form-control" type="text" value="1" /></td>
-                                <td class="text-right">124,90 €</td>
-                                <td class="text-right"><button class="btn btn-sm btn-danger"><i class="bi bi-trash"></i> </button> </td>
-                            </tr>
-                            <tr>
-                                <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-                                <td>Product Name Toto</td>
-                                <td>In stock</td>
-                                <td><input class="form-control" type="text" value="1" /></td>
-                                <td class="text-right">33,90 €</td>
-                                <td class="text-right"><button class="btn btn-sm btn-danger"><i class="bi bi-trash"></i> </button> </td>
-                            </tr>
-                            <tr>
-                                <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-                                <td>Product Name Titi</td>
-                                <td>In stock</td>
-                                <td><input class="form-control" type="text" value="1" /></td>
-                                <td class="text-right">70,00 €</td>
+                            <tr th:each="item : ${listaItens}">
+                                <td><img th:src="${item.produto.urlFoto}" style=" width: 50px; height: 50px;" /> </td>
+                                <td th:text="${item.produto.nome}">Product Name Dada</td>
+                                <td>Em estoque</td>
+                                <td><input th:value="${item.quantidade}" class="form-control" type="number"/></td>
+                                <td class="text-right" th:text="${item.valorTotal}" ></td>
                                 <td class="text-right"><button class="btn btn-sm btn-danger"><i class="bi bi-trash"></i> </button> </td>
                             </tr>
                             <tr>
@@ -51,15 +35,15 @@
                                 <td></td>
                                 <td></td>
                                 <td>Sub-Total</td>
-                                <td class="text-right">255,90 €</td>
+                                <td class="text-right">R$ 255,90</td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td>Shipping</td>
-                                <td class="text-right">6,90 €</td>
+                                <td>Frete</td>
+                                <td class="text-right">R$ 6,90</td>
                             </tr>
                             <tr>
                                 <td></td>
@@ -67,7 +51,7 @@
                                 <td></td>
                                 <td></td>
                                 <td><strong>Total</strong></td>
-                                <td class="text-right"><strong>346,90 €</strong></td>
+                                <td class="text-right"><strong>R$ 346,90</strong></td>
                             </tr>
                             </tbody>
                         </table>
@@ -76,10 +60,10 @@
                 <div class="col mb-2">
                     <div class="row">
                         <div class="col-sm-12  col-md-6">
-                            <button class="btn btn-lg btn-block btn-light">Continue Shopping</button>
+                            <button class="btn btn-lg btn-block btn-light">Continuar Comprando</button>
                         </div>
                         <div class="col-sm-12 col-md-6 text-right">
-                            <button class="btn btn-lg btn-block btn-success text-uppercase">Checkout</button>
+                            <button class="btn btn-lg btn-block btn-success text-uppercase">Finalizar Compra</button>
                         </div>
                     </div>
                 </div>

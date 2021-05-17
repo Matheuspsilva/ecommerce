@@ -12,7 +12,7 @@ public class Produto {
     private long id;
 
     private String nome;
-    private BigDecimal valor;
+    private Double valor;
     private String descricao;
     private String urlProduto;
     private String urlFoto;
@@ -34,11 +34,11 @@ public class Produto {
         this.nome = nome;
     }
 
-    public BigDecimal getValor() {
+    public Double getValor() {
         return valor;
     }
 
-    public void setValor(BigDecimal valor) {
+    public void setValor(Double valor) {
         this.valor = valor;
     }
 
