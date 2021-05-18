@@ -8,37 +8,21 @@ Implementar um checkout transparente de uma loja virtual que por meio de um carr
 
 Os passos para utilizar o sistema deve ser, não necessariamente separados:
 
-1) O cliente cria um carrinho de compras;
-2) O cliente coloca produtos nesse carrinho de compras;
-3) O cliente decide fazer o checkout do carrinho de compras;
+1) O cliente acessa a lista de produtos pela página inicial do site.
+   ![alt text](https://github.com/Matheuspsilva/ecommerce/tree/main/src/main/resources/static/images/homepage.png?raw=true)
+2) O cliente coloca produtos nesse carrinho de compras por meio do botão comprar;
+3) O cliente decide fazer o checkout do carrinho de compras por meio do botão finalizar compra;
+   ![alt text](https://github.com/Matheuspsilva/ecommerce/tree/main/src/main/resources/static/images/carrinho.png?raw=true)
 4) O cliente seleciona o endereço de entrega e o frete(Obs: considerar frete fixo por cada transportadora);
 5) O cliente Seleciona a forma de pagamento e confirma;
+   ![alt text](https://github.com/Matheuspsilva/ecommerce/tree/main/src/main/resources/static/images/finalizar.png?raw=true)
 6) Caso a venda seja concluída retornar mensagem de sucesso com número do pedido e código de rastreio;
 
 É obrigatória uma documentação (pode ser simples) demonstrando como utilizar as chamadas webs-service.
 
+ - Resultado do pedido pode ser acessado pela url /pedidos
+ - Caso deseje buscar um pedido específico o usuários deve especificar o id do item desejado Ex: /pedido/1
 
-
-Classes básicas para operar o sistema:
-
-* Produto
-
-* Cliente
-
-* Endereco
-
-* Transportadora
-
-* Pagamento
-
-* TipoPagamento
-
-Essas entidades são o mínimo esperado. Podem ser adicionados mais entidades dependendo da necessidade.
-É esperado que o aplicante faça o design das classes internas para executar o procedimento.
-
-
-(Bônus)
-Essas etapas são opcionais, porém irão melhorar a sua avaliação.
 0) Uso de banco de dados nesta aplicação é opcional, o conteúdo pode ser armazenado em memória e existir apenas enquanto a aplicação estiver em execução
 1) Relatórios. Retornar um JSON explicitando as compras feitas pelos clientes.
 2) A aplicação final deve ser dockerizada, e sua imagem deve estar disponível em um DockerHub próprio do aplicante.
