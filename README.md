@@ -11,9 +11,11 @@ Os passos para utilizar o sistema deve ser, não necessariamente separados:
 1) O cliente acessa a lista de produtos pela página inicial do site.
    ![alt text](https://github.com/Matheuspsilva/ecommerce/tree/main/src/main/resources/static/images/homepage.png?raw=true)
 2) O cliente coloca produtos nesse carrinho de compras por meio do botão comprar;
+   ![alt text](/src/main/resources/static/images/homepage.png?raw=true)
 3) O cliente decide fazer o checkout do carrinho de compras por meio do botão finalizar compra;
    ![alt text](https://github.com/Matheuspsilva/ecommerce/tree/main/src/main/resources/static/images/carrinho.png?raw=true)
 4) O cliente seleciona o endereço de entrega e o frete(Obs: considerar frete fixo por cada transportadora);
+   <img src ="https://github.com/Matheuspsilva/ecommerce/tree/main/src/main/resources/static/images/carrinho.png">
 5) O cliente Seleciona a forma de pagamento e confirma;
    ![alt text](https://github.com/Matheuspsilva/ecommerce/tree/main/src/main/resources/static/images/finalizar.png?raw=true)
 6) Caso a venda seja concluída retornar mensagem de sucesso com número do pedido e código de rastreio;
