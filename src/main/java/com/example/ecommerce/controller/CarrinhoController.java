@@ -83,7 +83,7 @@ public class CarrinhoController {
         buscarListaEndereco();
         ModelAndView mv = new ModelAndView("cliente/finalizar");
         calcularTotal();
-        // TODO: 18/05/2021 Implementar transportadoras por meio de presistência 
+        // TODO: 18/05/2021 Implementar transportadoras por meio de presistência
 //        listaTransportadoras =  transportadoraRepository.findAll();
 //        mv.addObject("listaTransportadoras", listaTransportadoras);
         
@@ -107,6 +107,7 @@ public class CarrinhoController {
             ip.setPedido(pedido);
             itensPedidoRepository.saveAndFlush(ip);
         }
+        mv.addObject("pedido", pedido);
         itensPedido = new ArrayList<>();
         pedido = new Pedido();
         return mv;

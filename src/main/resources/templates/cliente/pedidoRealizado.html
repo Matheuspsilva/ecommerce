@@ -1,12 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html  xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" layout:decorate="~{fragments/layout}" lang="pt">
 <head>
     <meta charset="UTF-8">
     <title>Confirmação do pedido</title>
 </head>
 <body>
 
-  <h1>Pedido Efetuado com sucesso</h1>
+<div class="container" layout:fragment="corpo">
+    <div class="row mt-4">
+        <div class="col-md-4"></div>
+        <div class="card col-md-4" style="width: 18rem;">
+            <div class="card-body">
+                <h3 class="card-title">Pedido Efetuado Com Sucesso</h3>
+                <h6 class="card-subtitle mb-2 text-muted">Número do pedido:<span th:text="${pedido.id}"></span></h6>
+                <p class="card-text">Código de Rastreio: 21234124BR</p>
+                <p class="card-text">Data de Entrega: </p>
+                <a href="#" class="card-link">Ver pedido</a>
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+
+</div>
 
 </body>
 </html>

@@ -25,7 +25,7 @@ public class ProdutoController {
         return mv;
     }
 
-    @GetMapping("administrativo/produtos/listar")
+    @GetMapping("administrativo/produtos")
     public String listar(Model model){
         List<Produto> produtos = produtoRepository.findAll();
         model.addAttribute("produtos", produtos);
