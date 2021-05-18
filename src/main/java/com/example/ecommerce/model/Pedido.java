@@ -9,7 +9,7 @@ public class Pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private Double valor;
+    private Double valor = 0.0;
     private Double frete;
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataPedido = new Date();

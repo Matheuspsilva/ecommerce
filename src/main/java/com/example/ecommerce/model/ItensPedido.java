@@ -8,8 +8,8 @@ public class ItensPedido {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private Integer quantidade;
-    private Double valorUnitario;
-    private Double valorTotal;
+    private Double valorUnitario = 0.0;
+    private Double valorTotal = 0.0;
 
 
     @ManyToOne

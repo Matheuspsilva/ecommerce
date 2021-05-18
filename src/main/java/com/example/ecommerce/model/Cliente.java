@@ -54,11 +54,4 @@ public class Cliente {
         this.senha = senha;
     }
 
-//    public Endereco getEndereco() {
-//        return endereco;
-//    }
-//
-//    public void setEndereco(Endereco endereco) {
-//        this.endereco = endereco;
-//    }
 }

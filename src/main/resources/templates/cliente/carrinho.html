@@ -16,7 +16,8 @@
                                 <th scope="col">Produto</th>
                                 <th scope="col">Estoque</th>
                                 <th scope="col" class="text-center">Quantidade</th>
-                                <th scope="col" class="text-right">Preço</th>
+                                <th scope="col" class="text-right">Preço Unitário</th>
+                                <th scope="col" class="text-right">Preço total</th>
                                 <th> </th>
                             </tr>
                             </thead>
@@ -25,33 +26,41 @@
                                 <td><img th:src="${item.produto.urlFoto}" style=" width: 50px; height: 50px;" /> </td>
                                 <td th:text="${item.produto.nome}">Product Name Dada</td>
                                 <td>Em estoque</td>
-                                <td><input th:value="${item.quantidade}" class="form-control" type="number"/></td>
+                                <td style="text-align: center;">
+                                    <a th:href="@{/alterarQuantidade/{id}/{acao}(id=${item.produto.id},acao=${1})}"><i class="bi bi-plus-square"></i></a>
+                                    <span th:text="${item.quantidade}"></span>
+                                    <a th:href="@{/alterarQuantidade/{id}/{acao}(id=${item.produto.id},acao=${0})}"><i class="bi bi-dash-square"></i></a>
+                                </td>
+                                <td class="text-right" th:text="${item.valorUnitario}" ></td>
                                 <td class="text-right" th:text="${item.valorTotal}" ></td>
-                                <td class="text-right"><button class="btn btn-sm btn-danger"><i class="bi bi-trash"></i> </button> </td>
+                                <td class="text-right"><a th:href="@{/removerProduto/{id}(id=${item.produto.id})}" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i> </a> </td>
                             </tr>
                             <tr>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td>Sub-Total</td>
-                                <td class="text-right">R$ 255,90</td>
+                                <td class="text-right"><span th:text="${pedido.valor}"></span></td>
                             </tr>
                             <tr>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td>Frete</td>
-                                <td class="text-right">R$ 6,90</td>
+                                <td class="text-right">R$ 0,00</td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
+                                <td></td>
                                 <td><strong>Total</strong></td>
-                                <td class="text-right"><strong>R$ 346,90</strong></td>
+                                <td class="text-right"><span th:text="${pedido.valor}"></span></td>
                             </tr>
                             </tbody>
                         </table>
@@ -60,10 +69,10 @@
                 <div class="col mb-2">
                     <div class="row">
                         <div class="col-sm-12  col-md-6">
-                            <button class="btn btn-lg btn-block btn-light">Continuar Comprando</button>
+<!--                            <a th:href="/" class="btn btn-lg btn-block btn-light">Continuar Comprando</a>-->
                         </div>
                         <div class="col-sm-12 col-md-6 text-right">
-                            <button class="btn btn-lg btn-block btn-success text-uppercase">Finalizar Compra</button>
+                            <a th:href="finalizar" class="btn btn-lg btn-block btn-primary text-uppercase">Finalizar Compra</a>
                         </div>
                     </div>
                 </div>
