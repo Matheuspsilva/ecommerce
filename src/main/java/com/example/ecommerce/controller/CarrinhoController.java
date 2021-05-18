@@ -1,13 +1,7 @@
 package com.example.ecommerce.controller;
 
-import com.example.ecommerce.model.Cliente;
-import com.example.ecommerce.model.ItensPedido;
-import com.example.ecommerce.model.Pedido;
-import com.example.ecommerce.model.Produto;
-import com.example.ecommerce.repository.ClienteRepository;
-import com.example.ecommerce.repository.ItensPedidoRepository;
-import com.example.ecommerce.repository.PedidoRepository;
-import com.example.ecommerce.repository.ProdutoRepository;
+import com.example.ecommerce.model.*;
+import com.example.ecommerce.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -28,6 +22,7 @@ public class CarrinhoController {
     private List<ItensPedido> itensPedido = new ArrayList<ItensPedido>();
     private Pedido pedido = new Pedido();
     private Cliente cliente;
+    private Endereco endereco;
 
     @Autowired
     private ProdutoRepository produtoRepository;
@@ -40,6 +35,9 @@ public class CarrinhoController {
 
     @Autowired
     private ItensPedidoRepository itensPedidoRepository;
+
+    @Autowired
+    private EnderecoRepository enderecoRepository;
 
     private void calcularTotal()
     {
@@ -58,21 +56,33 @@ public class CarrinhoController {
     }
 
     private void buscarUsuarioLogado(){
-        Authentication UsuarioAutenticado = SecurityContextHolder.getContext().getAuthentication();
-        if(!(UsuarioAutenticado instanceof AnonymousAuthenticationToken)){
-            String email = UsuarioAutenticado.getName();
+        Authentication usuarioAutenticado = SecurityContextHolder.getContext().getAuthentication();
+        if(!(usuarioAutenticado instanceof AnonymousAuthenticationToken)){
+            String email = usuarioAutenticado.getName();
             cliente = clienteRepository.buscarClienteEmail(email).get(0);
+        }
+    }
+
+    private void buscarListaEndereco(){
+        Authentication usuarioAutenticado = SecurityContextHolder.getContext().getAuthentication();
+        if(!(usuarioAutenticado instanceof AnonymousAuthenticationToken)){
+            String email = usuarioAutenticado.getName();
+            cliente = clienteRepository.buscarClienteEmail(email).get(0);
+            long userID = cliente.getId();
+            endereco = enderecoRepository.buscarClienteEndereco(userID).get(0);
         }
     }
 
     @GetMapping("/finalizar")
     public ModelAndView finalizarPedido(){
         buscarUsuarioLogado();
+        buscarListaEndereco();
         ModelAndView mv = new ModelAndView("cliente/finalizar");
         calcularTotal();
         mv.addObject("pedido", pedido);
         mv.addObject("listaItens", itensPedido );
         mv.addObject("cliente", cliente);
+        mv.addObject("endereco", endereco);
         return mv;
     }
 
@@ -81,6 +91,7 @@ public class CarrinhoController {
         ModelAndView mv = new ModelAndView("cliente/pedidoRealizado");
         pedido.setCliente(cliente);
         pedido.setFormaPagamento(formaPagamento);
+        pedido.setEndereco(endereco);
         pedidoRepository.saveAndFlush(pedido);
 
         for(ItensPedido ip:itensPedido){

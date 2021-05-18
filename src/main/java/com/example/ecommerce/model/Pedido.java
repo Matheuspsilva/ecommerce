@@ -21,6 +21,10 @@ public class Pedido {
     @ManyToOne
     private Cliente cliente;
 
+    @ManyToOne
+    private Endereco endereco;
+
+
     public long getId() {
         return id;
     }
@@ -91,5 +95,13 @@ public class Pedido {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 }
