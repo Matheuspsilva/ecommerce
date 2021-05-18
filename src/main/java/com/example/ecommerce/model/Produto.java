@@ -17,7 +17,7 @@ public class Produto {
     private String descricao;
     private String urlProduto;
     private String urlFoto;
-    private Double quantidade =0.0;
+    private Double quantidade = 0.0;
 
     public long getId() {
         return id;

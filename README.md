@@ -17,6 +17,8 @@ Os passos para utilizar o sistema deve ser, não necessariamente separados:
 
 É obrigatória uma documentação (pode ser simples) demonstrando como utilizar as chamadas webs-service.
 
+
+
 Classes básicas para operar o sistema:
 
 * Produto

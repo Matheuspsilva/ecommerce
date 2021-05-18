@@ -22,7 +22,8 @@ public class CarrinhoController {
     private List<ItensPedido> itensPedido = new ArrayList<ItensPedido>();
     private Pedido pedido = new Pedido();
     private Cliente cliente;
-    private Endereco endereco;
+    private List<Endereco> endereco = new ArrayList<Endereco>();
+    private List<Transportadora> listaTransportadoras = new ArrayList<Transportadora>();
 
     @Autowired
     private ProdutoRepository produtoRepository;
@@ -38,6 +39,9 @@ public class CarrinhoController {
 
     @Autowired
     private EnderecoRepository enderecoRepository;
+
+    @Autowired
+    private TransportadoraRepository transportadoraRepository;
 
     private void calcularTotal()
     {
@@ -69,7 +73,7 @@ public class CarrinhoController {
             String email = usuarioAutenticado.getName();
             cliente = clienteRepository.buscarClienteEmail(email).get(0);
             long userID = cliente.getId();
-            endereco = enderecoRepository.buscarClienteEndereco(userID).get(0);
+            endereco = enderecoRepository.buscarClienteEndereco(userID);
         }
     }
 
@@ -79,21 +83,26 @@ public class CarrinhoController {
         buscarListaEndereco();
         ModelAndView mv = new ModelAndView("cliente/finalizar");
         calcularTotal();
+        // TODO: 18/05/2021 Implementar transportadoras por meio de presistência 
+//        listaTransportadoras =  transportadoraRepository.findAll();
+//        mv.addObject("listaTransportadoras", listaTransportadoras);
+        
         mv.addObject("pedido", pedido);
         mv.addObject("listaItens", itensPedido );
         mv.addObject("cliente", cliente);
-        mv.addObject("endereco", endereco);
+        mv.addObject("listaEndereco", endereco);
         return mv;
     }
 
     @PostMapping("/finalizar/confirmar")
-    public ModelAndView confirmarPedido(String formaPagamento){
+    public ModelAndView confirmarPedido(String formaPagamento,Long enderecoId, Double transportadora){
         ModelAndView mv = new ModelAndView("cliente/pedidoRealizado");
         pedido.setCliente(cliente);
         pedido.setFormaPagamento(formaPagamento);
-        pedido.setEndereco(endereco);
+        Endereco enderecoSelecionado = enderecoRepository.buscarEndereco(enderecoId).get(0);
+        pedido.setEndereco(enderecoSelecionado);
         pedidoRepository.saveAndFlush(pedido);
-
+        pedido.setFrete(transportadora);
         for(ItensPedido ip:itensPedido){
             ip.setPedido(pedido);
             itensPedidoRepository.saveAndFlush(ip);

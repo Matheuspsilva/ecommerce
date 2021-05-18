@@ -1,7 +1,21 @@
 <!DOCTYPE html>
 <html  xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" layout:decorate="~{fragments/layout}" lang="pt">
     <head>
+        <script type = "text/javascript">
+        function myFunction(e) {
+            document.getElementById("myText").innerHTML = e.target.value
+        }
+        function total(){
+            subtotal =  parseFloat(document.getElementById("subtotal").innerHTML);
+            console.log(subtotal);
+            frete = parseFloat(document.getElementById("myText").innerHTML);
+            console.log(frete);
+            total1 = subtotal + frete;
+            console.log(total1);
+            document.getElementById("total").innerHTML = subtotal + frete;
+        }
 
+        </script>
     </head>
     <body>
         <div class="container" layout:fragment="corpo">
@@ -16,9 +30,30 @@
                     </div>
                     <div class="col-md-6">
                         <h3>Endereço de Entrega</h3>
-                        <p><span th:text="${endereco.cep}"></span></p>
-                        <p><span th:text="${endereco.logradouro}"></span></p>
-                        <p><span th:text="${endereco.complemento}"></span></p>
+                        <div class="form-group">
+                            <label for="enderecoId">Seus Endereços</label>
+                            <select class="form-control"  name="enderecoId" id="enderecoId">
+                                <div  th:each="endereco : ${listaEndereco}">
+                                    <option th:value="${endereco.id}" th:text="${endereco.logradouro}" ></option>
+                                </div>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="transportadora">Transportadora</label>
+<!--                            <select class="form-control"  name="trasportadora" id="transportadora">-->
+<!--                                <div  th:each="trasportadora : ${listaTransportadoras}">-->
+<!--                                    <option th:value="${transportadora?.nome}" th:text="${transportadora?.nome}" ></option>-->
+<!--                                </div>-->
+<!--                            </select>-->
+                            <select class="form-control" id="transportadora" name="transportadora" onchange="myFunction(event);total()">
+                                <option disabled selected>Escolha uma transportadora</option>
+                                <option value="10.00">JadLog</option>
+                                <option value="20.00">Correios</option>
+                                <option value="30.00">CargoBr</option>
+                            </select>
+
+
+                        </div>
                     </div>
 
                         <div class="col-md-6">
@@ -66,7 +101,7 @@
                                         <td></td>
                                         <td></td>
                                         <td>Sub-Total</td>
-                                        <td class="text-right"><span th:text="${pedido.valor}"></span></td>
+                                        <td class="text-right"><span name="subtotal" id="subtotal" th:text="${pedido.valor}"></span></td>
                                     </tr>
                                     <tr>
                                         <td></td>
@@ -75,7 +110,7 @@
                                         <td></td>
                                         <td></td>
                                         <td>Frete</td>
-                                        <td class="text-right">R$ 0,00</td>
+                                        <td class="text-right"><span id="myText" type="text" value="">0.0</span></td>
                                     </tr>
                                     <tr>
                                         <td></td>
@@ -84,7 +119,7 @@
                                         <td></td>
                                         <td></td>
                                         <td><strong>Total</strong></td>
-                                        <td class="text-right"><span th:text="${pedido.valor}"></span></td>
+                                        <td class="text-right"><span id="total" name="total"></span></td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -102,5 +137,6 @@
                 </div>
             </form>
         </div>
+
     </body>
 </html>
