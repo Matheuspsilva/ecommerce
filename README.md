@@ -24,7 +24,8 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [MySql](https://www.mysql.com/)
 
 ###  Demonstração 
-
+0) Para cadastrar produtos no ecommerce é necessário acessar a url "/administrativo/produtos" ou acessar pela Dashboard "/administrativo"
+   ![alt text](/src/main/resources/static/images/dashboard.png)
 1) O cliente acessa a lista de produtos pela página inicial do site.
    ![alt text](/src/main/resources/static/images/homepage.png?raw=true)
 2) O cliente coloca produtos nesse carrinho de compras por meio do botão comprar;
