@@ -1,8 +1,29 @@
-## Ecommerce - Checkout transparente
+# Ecommerce - Checkout transparente
 
 ## Descrição do Projeto
 <p align="center">Ecommerce Desenvolvido utilizando a linguagem Java em conjunto do framework Spring e Banco de dados MySql</p>
 
+<h4 align="center"> 
+	🚧  Ecommerce Spring 🚀 Em construção...  🚧
+</h4>
+
+### Features
+
+- [x] Cadastro de cliente
+- [x] Cadastro de produtos
+- [x] checkout transparente
+- [x] Relatórios de Pedidos
+
+
+### 🛠 Tecnologias
+
+As seguintes ferramentas foram usadas na construção do projeto:
+
+- [Spring](https://spring.io/)
+- [Bootstrap](https://getbootstrap.com/)
+- [MySql](https://www.mysql.com/)
+
+###  Demonstração 
 
 1) O cliente acessa a lista de produtos pela página inicial do site.
    ![alt text](/src/main/resources/static/images/homepage.png?raw=true)
@@ -16,6 +37,7 @@
 7) O cliente seleciona o endereço de entrega, o frete e a forma de pagamento e confirma;
    ![alt text](/src/main/resources/static/images/finalizar.png?raw=true)
 8) Caso a venda seja concluída retornar mensagem de sucesso com número do pedido e código de rastreio;
+   ![alt text](/src/main/resources/static/images/pedidoRealizado.png?raw=true)
 
 ### Relatório de pedidos
 
